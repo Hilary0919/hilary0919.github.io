@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>window</title>
+    <script>
+
+        //获取分辨率
+        console.log(window.screen.width + '*' + window.screen.height)
+        console.log(screen.width + '*' + screen.height)
+
+        function doAlert() {
+            alert('alert')
+            //window.alert，window是顶层对象可以省略
+        }
+        function doPrompt() {
+            var username = prompt("请输入用户名：")
+        }
+        function doConfirm() {
+            var flag = confirm("确认关闭？")
+            console.log(flag)
+        }
+        function doOpen() {
+            open("循环.html", "", "width=600,height=400");
+        }
+        function doClose() {
+            close();//chrome支持，firefox不支持，open方法打开窗口，firefox支持close
+        }
+        var timer;
+        var timer2;
+        function doStart() {
+            timer = setTimeout(function () {
+                console.log('计时器')
+            }, 1000)
+            console.log(timer)
+        }
+        function doClear() {
+            window.clearTimeout(timer)
+            //window.clearInterval(timer)，两个方法都可以清除
+        }
+        function doStart2() {
+            time2 = setInterval(function () {
+                console.log('周期性')
+            }, 1000)
+        }
+        function doClear2() {
+            window.clearInterval(timer2)
+        }
+        function doBack() {
+            window.history.back();//history.back()
+        }
+        function doForward() {
+            window.history.forward();//history.forward()
+        }
+        function doGo() {
+            window.history.go(0);
+        }
+        function getLocation() {
+            console.log(window.location.href);
+        }
+        function setLocation() {
+            location.href = '循环.html'
+        }
+        function doReload() {
+            location.reload();
+        }
+        function doChange(obj) {
+            location.href = obj.value;
+        }
+        function doBgColor() {
+            document.bgColor = 'lightblue';
+        }
+        function doTitle() {
+            // console.log(document.title);
+            document.title='window相关'
+        }
+        function doBody() {
+            console.log(document.body)
+        }
+        function doWrite() {
+            var window2 = window.open();
+            window2.document.write('新页面');
+        }
+    </script>
+</head>
+
+<body>
+    <input type="button" value="alert" onclick="doAlert()">
+    <input type="button" value="prompt" onclick="doPrompt()">
+    <input type="button" value="confirm" onclick="doConfirm()">
+    <input type="button" value="open" onclick="doOpen()">
+    <input type="button" value="close" onclick="doClose()">
+    <br />
+    <h3>----------计时器----------</h3>
+    <input type="button" value="一次性计时器" onclick="doStart()">
+    <input type="button" value="清除计时器" onclick="doClear()">
+    <input type="button" value="周期性计时器" onclick="doStart2()">
+    <input type="button" value="清除周期性计时器" onclick="doClear2()">
+    <br />
+    <h3>----------history----------</h3>
+    <input type="button" value="后退" onclick="doBack()">
+    <input type="button" value="前进" onclick="doForward()">
+    <input type="button" value="刷新" onclick="doGo()">
+    <br />
+    <h3>----------location----------</h3>
+    <input type="button" value="获取地址" onclick="getLocation()">
+    <input type="button" value="设置地址" onclick="setLocation()">
+    <input type="button" value="刷新" onclick="doReload()">
+    <select onchange="doChange(this)">
+        <option value="http://www.baidu.com">百度</option>
+        <option value="window.html">window</option>
+        <option value="数组.html">数组</option>
+    </select>
+    <br />
+    <h3>----------document----------</h3>
+    <input type="button" value="设置页面背景" onclick="doBgColor()">
+    <input type="button" value="设置标题" onclick="doTitle()">
+    <input type="button" value="获取body" onclick="doBody()">
+    <input type="button" value="write" onclick="doWrite()">
+
+</body>
+
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <script>
+        function $(id) {
+            return document.getElementById(id);
+        }
+        var province = [
+            {
+                id: 1001,
+                name: '江苏省',
+                citys: [
+                    { id: 1, name: '南京市' },
+                    { id: 2, name: '南通市' },
+                    { id: 3, name: '苏州市' },
+                    { id: 4, name: '无锡市' },
+                    { id: 5, name: '常州市' },
+                    { id: 6, name: '扬州市' }
+                ]
+            }, {
+                id: 1002,
+                name: '安徽省',
+                citys: [
+                    { id: 1, name: '合肥市' },
+                    { id: 2, name: '芜湖市' },
+                    { id: 3, name: '蚌埠市' },
+                    { id: 4, name: '滁州市' },
+                    { id: 5, name: '安庆市' },
+                    { id: 6, name: '六安市' }
+                ]
+            }, {
+                id: 1003,
+                name: '山东省',
+                citys: [
+                    { id: 1, name: '青岛市' },
+                    { id: 2, name: '潍坊市' },
+                    { id: 3, name: '济南市' },
+                    { id: 4, name: '日照市' },
+                    { id: 5, name: '淄博市' }
+                ]
+            }
+        ]
+        window.onload = function () {
+            for (var i = 0; i < province.length; i++) {
+                var options = new Option(province[i].name, province[i].id);
+                $('selProvince').add(options);
+            }
+        }
+        function getCity(obj) {
+            $('selCity').length = 1;
+            if (obj.value != 0) {
+                var city = province[obj.selectedIndex - 1].citys;
+                for (var i = 0; i < city.length; i++) {
+                    var options = new Option(city[i].name, city[i].id);
+                    $('selCity').add(options);
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <select id="selProvince" onchange="getCity(this)">
+        <option value="0">---请选择省份---</option>
+    </select>
+    <select id="selCity">
+        <option value="0">---请选择城市---</option>
+    </select>
+</body>
+
+</html>
